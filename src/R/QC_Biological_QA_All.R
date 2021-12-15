@@ -41,12 +41,12 @@ hpal <- colorRampPalette(c("blue","white","red"))(100)
 #' # any relevant identifier, and the metadata of importance to the study design
 #' # as columns, e.g. the SamplingTime for a time series experiment
 #'  ```
-samples <- read_csv(here("doc/Samples_new_All.csv"),
+samples <- read_csv(here("doc/CHANGEME.csv"),
                     col_types=cols(.default=col_factor()))
 
 
 #' # Raw data
-filelist <- list.files(here("data_new_All/"), 
+filelist <- list.files(here("CHANGEME/"), 
                        recursive = TRUE, 
                        pattern = "quant.sf",
                        full.names = TRUE)
@@ -126,8 +126,8 @@ ggplot(dat,aes(x=values,group=ind,col=Treatment)) +
   scale_x_continuous(name="per gene raw counts (log10)")
 
 #' ## Export
-dir.create(here("data_new_All/analysis/salmon"),showWarnings=FALSE,recursive=TRUE)
-write.csv(counts,file=here("data_new_All/analysis/salmon/raw-unormalised-gene-expression_data.csv"))
+dir.create(here("CHANGEME/analysis/salmon"),showWarnings=FALSE,recursive=TRUE)
+write.csv(counts,file=here("CHANGEME/analysis/salmon/raw-unormalised-gene-expression_data.csv"))
 
 #' # Data normalisation 
 #' ## Preparation
@@ -145,7 +145,7 @@ dds <- DESeqDataSetFromTximport(
   colData = samples,
   design = ~ Treatment)
 
-save(dds,file=here("data_new_All/analysis/salmon/dds.rda"))
+save(dds,file=here("CHANGEME/analysis/salmon/dds.rda"))
 
 #' Check the size factors (_i.e._ the sequencing library size effect)
 #' 
