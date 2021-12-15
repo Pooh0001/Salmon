@@ -267,7 +267,7 @@ extractEnrichmentResults <- function(enrichment,task="go",
 #' that contains a DESeqDataSet object. If you ran the 
 #' biological QA template, you need not change anything
 #' ```
-load(here("data_new_All/analysis/salmon/dds.rda"))
+load(here("CHANGEME/analysis/salmon/dds.rda"))
 
 #' ## Sub-selection
 dds <- dds[,dds$Treatment %in% c("LamV","Mock")]
@@ -278,10 +278,10 @@ design(dds) <- ~ Treatment * Time
 vsd <- varianceStabilizingTransformation(dds,blind=FALSE)
 vst <- assay(vsd)
 vst <- vst - min(vst)
-dir.create(here("data_new_All/analysis/DE_LamV_vs_Mock"),showWarnings=FALSE)
-save(vst,file=here("data_new_All/analysis/DE_LamV_vs_Mock/vst-aware.rda"))
+dir.create(here("CHANGEME/analysis/DE_LamV_vs_Mock"),showWarnings=FALSE)
+save(vst,file=here("CHANGEME/analysis/DE_LamV_vs_Mock/vst-aware.rda"))
 write_delim(as.data.frame(vst) %>% rownames_to_column("ID"),
-            here("data_new_All/analysis/DE_LamV_vs_Mock/vst-aware.tsv"))
+            here("CHANGEME/analysis/DE_LamV_vs_Mock/vst-aware.tsv"))
 
 #' ## Gene of interests
 #' ```{r goi, echo=FALSE,eval=FALSE}
@@ -333,14 +333,14 @@ resultsNames(dds)
 
 #' ### LamV vs Mock at 24h
 LamVvsMock24 <- extract_results(dds=dds,vst=vst,contrast="Treatment_LamV_vs_Mock",
-                                  default_dir=here("data_new_All/analysis/DE_LamV_vs_Mock"),
+                                  default_dir=here("CHANGEME/analysis/DE_LamV_vs_Mock"),
                                   default_prefix="LamV_vs_Mock_at_24-",
                                   labels=dds$Treatment,
                                   sample_sel=dds$Time=="24")
 
 #' ### LamV vs Mock at 48h 
 LamVvsMock48 <- extract_results(dds=dds,vst=vst,contrast=c(0,1,0,0,1,0),
-                                default_dir=here("data_new_All/analysis/DE_LamV_vs_Mock"),
+                                default_dir=here("CHANGEME/analysis/DE_LamV_vs_Mock"),
                                 default_prefix="LamV_vs_Mock_at_48-",
                                 labels=dds$Treatment,
                                 sample_sel=dds$Time=="48")
@@ -348,13 +348,13 @@ LamVvsMock48 <- extract_results(dds=dds,vst=vst,contrast=c(0,1,0,0,1,0),
 
 #' ### LamV vs Mock at 72h 
 LamVvsMock72 <- extract_results(dds=dds,vst=vst,contrast=c(0,1,0,0,0,1),
-                                default_dir=here("data_new_All/analysis/DE_LamV_vs_Mock"),
+                                default_dir=here("CHANGEME/analysis/DE_LamV_vs_Mock"),
                                 default_prefix="LamV_vs_Mock_at_72-",
                                 labels=dds$Treatment,
                                 sample_sel=dds$Time=="72")
 
 
-load(here("data_new_All/analysis/salmon/dds.rda")) 
+load(here("CHANGEME/analysis/salmon/dds.rda")) 
   
 #' ## Sub-selection
 dds <- dds[,dds$Treatment %in% c("WNV","Mock")]
@@ -365,10 +365,10 @@ design(dds) <- ~ Treatment * Time
 vsd <- varianceStabilizingTransformation(dds,blind=FALSE)
 vst <- assay(vsd)
 vst <- vst - min(vst)
-dir.create(here("data_new_All/analysis/DE_WNV_vs_Mock"),showWarnings=FALSE)
-save(vst,file=here("data_new_All/analysis/DE_WNV_vs_Mock/vst-aware.rda"))
+dir.create(here("CHANGEME/analysis/DE_WNV_vs_Mock"),showWarnings=FALSE)
+save(vst,file=here("CHANGEME/analysis/DE_WNV_vs_Mock/vst-aware.rda"))
 write_delim(as.data.frame(vst) %>% rownames_to_column("ID"),
-            here("data_new_All/analysis/DE_WNV_vs_Mock/vst-aware.tsv"))
+            here("CHANGEME/analysis/DE_WNV_vs_Mock/vst-aware.tsv"))
 
 #' ```
 goi <- read_lines(here("doc/goi.txt"))
@@ -390,7 +390,7 @@ resultsNames(dds)
 # WNV at 24h post infection, should be compared to Mock at 48h in this data-set, due to experimental setup (wet lab).
 #' ### WNV vs Mock at 48h 
 WNVvsMock48 <- extract_results(dds=dds,vst=vst,contrast="TreatmentWNV.Time48",
-                                default_dir=here("data_new_All/analysis/DE_WNV_vs_Mock"),
+                                default_dir=here("CHANGEME/analysis/DE_WNV_vs_Mock"),
                                 default_prefix="WNV_vs_Mock_at_48-",
                                 labels=dds$Treatment,
                                 sample_sel=dds$Time=="48")
@@ -398,13 +398,13 @@ WNVvsMock48 <- extract_results(dds=dds,vst=vst,contrast="TreatmentWNV.Time48",
 # WNV at 48h post infection, should be compared to Mock at 72h in this data-set, due to experimental setup (wet lab).
 #' ### WNV vs Mock at 72h (specific)
 WNVvsMock72 <- extract_results(dds=dds,vst=vst,contrast=c(0,1,0,0,0,1),
-                               default_dir=here("data_new_All/analysis/DE_WNV_vs_Mock"),
+                               default_dir=here("CHANGEME/analysis/DE_WNV_vs_Mock"),
                                default_prefix="WNV_vs_Mock_at_72-",
                                labels=dds$Treatment,
                                sample_sel=dds$Time=="72")
 
 
-load(here("data_new_All/analysis/salmon/dds.rda")) 
+load(here("CHANGEME/analysis/salmon/dds.rda")) 
 
 #' ## Sub-selection
 dds <- dds[,dds$Treatment %in% c("LamVWNV","Mock")]
@@ -415,10 +415,10 @@ design(dds) <- ~ Treatment * Time
 vsd <- varianceStabilizingTransformation(dds,blind=FALSE)
 vst <- assay(vsd)
 vst <- vst - min(vst)
-dir.create(here("data_new_All/analysis/DE_LamVWNV_vs_Mock"),showWarnings=FALSE)
-save(vst,file=here("data_new_All/analysis/DE_LamVWNV_vs_Mock/vst-aware.rda"))
+dir.create(here("CHANGEME/analysis/DE_LamVWNV_vs_Mock"),showWarnings=FALSE)
+save(vst,file=here("CHANGEME/analysis/DE_LamVWNV_vs_Mock/vst-aware.rda"))
 write_delim(as.data.frame(vst) %>% rownames_to_column("ID"),
-            here("data_new_All/analysis/DE_LamVWNV_vs_Mock/vst-aware.tsv"))
+            here("CHANGEME/analysis/DE_LamVWNV_vs_Mock/vst-aware.tsv"))
 
 #' ```
 goi <- read_lines(here("doc/goi.txt"))
@@ -438,14 +438,14 @@ resultsNames(dds)
 
 #' ### LamVWNV vs Mock at 48h 
 LamVWNVvsMock48 <- extract_results(dds=dds,vst=vst,contrast="TreatmentLamVWNV.Time48",
-                               default_dir=here("data_new_All/analysis/DE_LamVWNV_vs_Mock"),
+                               default_dir=here("CHANGEME/analysis/DE_LamVWNV_vs_Mock"),
                                default_prefix="LamVWNV_vs_Mock_at_48-",
                                labels=dds$Treatment,
                                sample_sel=dds$Time=="48")
 
 #' ### LamVWNV vs Mock at 72h 
 LamVWNVvsMock72 <- extract_results(dds=dds,vst=vst,contrast=c(0,1,0,0,0,1),
-                               default_dir=here("data_new_All/analysis/DE_LamVWNV_vs_Mock"),
+                               default_dir=here("CHANGEME/analysis/DE_LamVWNV_vs_Mock"),
                                default_prefix="LamVWNV_vs_Mock_at_72-",
                                labels=dds$Treatment,
                                sample_sel=dds$Time=="72")
@@ -526,4 +526,3 @@ dev.null <- lapply(
 #'  ```{r session info, echo=FALSE}
 #'  sessionInfo()
 #'  ```
-
