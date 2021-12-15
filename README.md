@@ -2,8 +2,12 @@
 
 ## Setup
 ```{bash}
-ln -s /mnt/picea/projects/labs/alblomstroem/pontus data
+ln -s /mnt/picea/projects/labs/datafolder/ data
 ```
+
+Describe the R scripts used to analyse RNA-seq data, that have been published DOI:
+
+Short description of study: RNA-seq data of Aedes albopictus cells infected with either West Nile Virus (WNV), insect-specific Lammi virus (LamV) or an infection scheme whereby cells were pre-infected with LamV prior to challenge with WNV. Our aim is to improve the understanding of the insect-specific flavivirus interaction and its effects on the host. Furthermore, we investigated the possible interfering effects of a prior LamV infection on WNV replication.
 
 Raw sequencing data have been made publicly available at NCBI Sequence Read Archive (SRA) under accession number Bioproject ID PRJNA785413.
 
